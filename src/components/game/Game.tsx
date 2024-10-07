@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import style from "./game.module.css";
 import cn from "classnames";
@@ -6,13 +6,24 @@ import cn from "classnames";
 import Button from "../button/Button";
 
 const Game: FC = (): React.ReactElement => {
+  const [gameStart, setGameStart] = useState(false);
+
+
+  const [total, setTotal] = useState(0);
+  const [found, setFound] = useState(0);
+
+  const gameStartHandler = () => setGameStart((current) => !current);
+
   return (
     <div className={cn(style.game)}>
       <div className={cn(style.game__controllers)}>
-        <Button title="Начать игру" use="primary" size="large" />
+        <Button title="Начать игру" use="primary" size="large" clickHandler={gameStartHandler} />
       </div>
 
-      <div className={cn(style.game__info)}></div>
+      <div className={cn(style.game__info)}>
+        <span className={cn(style["game__info-note"])}>{}</span>
+        <span className={cn(style["game__info-note"])}>{}</span>
+      </div>
 
       <div className={cn(style.game__area)}></div>
     </div>
