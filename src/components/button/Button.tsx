@@ -7,12 +7,12 @@ type ButtonType = {
   use: string;
   arrow?: string;
   size: string;
-  img?: string;
+  children?: React.ReactElement;
   clickHandler?: () => void;
   disabled?: boolean;
 };
-// TODO: Разобраться с img
-const Button: FC<ButtonType> = ({ title, use, arrow, size, img, clickHandler, disabled }): React.ReactElement | null => {
+
+const Button: FC<ButtonType> = ({ title, use, arrow, size, children, clickHandler, disabled }): React.ReactElement | null => {
   const sizeModificator = size && size !== "small" ? style[`btn--${size}`] : "";
 
   return (
@@ -26,6 +26,7 @@ const Button: FC<ButtonType> = ({ title, use, arrow, size, img, clickHandler, di
       {title}
 
       {arrow && arrow !== "left" && <BiArrowToRight />}
+      {children}
     </button>
   );
 };
