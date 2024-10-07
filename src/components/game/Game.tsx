@@ -29,7 +29,11 @@ const Game: FC = (): React.ReactElement => {
         <span className={cn(style["game__info-note"])}>Всего: {total}</span>
       </div>
 
-      <div className={cn(style.game__area)}></div>
+      <div className={cn(style.game__area)}>
+        <Button  use="primary" size="large" clickHandler={gameStartHandler}>
+            <img src={stone_1} alt="asdasdas" />
+        </Button>
+      </div>
     </div>
   );
 };

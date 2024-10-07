@@ -3,10 +3,10 @@ import { FC } from "react";
 import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
 
 type ButtonType = {
-  title: string;
-  use: string;
+  title?: string;
+  use?: string;
   arrow?: string;
-  size: string;
+  size?: string;
   children?: React.ReactElement;
   clickHandler?: () => void;
   disabled?: boolean;
