@@ -51,6 +51,11 @@
   text-underline-offset: 3px;
 }
 
+.btn--transparent {
+  background-color: transparent;
+  border: none;
+}
+
 .btn--medium {
   font-size: 18px;
 }

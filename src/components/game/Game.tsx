@@ -30,7 +30,7 @@ const Game: FC = (): React.ReactElement => {
       </div>
 
       <div className={cn(style.game__area)}>
-        <Button  use="primary" size="large" clickHandler={gameStartHandler}>
+        <Button  use="transparent" size="large" clickHandler={gameStartHandler}>
             <img src={stone_1} alt="asdasdas" />
         </Button>
       </div>
