@@ -5,9 +5,15 @@ import cn from "classnames";
 
 import Button from "../button/Button";
 
-const Game: FC = (): React.ReactElement => {
+import type { DataType } from "../../assets/data/data";
+
+type DataGameType = {
+  data: DataType[];
+};
+
+const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
   const [gameStart, setGameStart] = useState<boolean>(false);
-  const [gameValues, setGameValues] = useState([])
+  const [gameValues, setGameValues] = useState([]);
 
   const [total, setTotal] = useState<number>(0);
   const [found, setFound] = useState<number>(0);

@@ -4,10 +4,12 @@ import cn from "classnames";
 
 import Game from "../game/Game";
 
+import { data } from "../../assets/data/data";
+
 const App: FC = (): React.ReactElement => {
   return (
     <div className={cn(style.container)}>
-      <Game />
+      <Game data={data} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import stone_2 from "../images/t2.png";
 import stone_3 from "../images/t3.png";
 import stone_4 from "../images/t4.png";
 
-type DataType = {
+export type DataType = {
   id: number;
   color: string;
   img: string;
