@@ -45,11 +45,19 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
       </div>
 
       <div className={cn(style.game__area)}>
-        {data.map(({ id, color, img }) => (
-          <Button use="transparent" size="large" key={id}>
-            <img src={img} alt={color} />
-          </Button>
-        ))}
+        {gameStart
+          ? data
+              .sort(() => Math.random() - 0.5)
+              .map(({ id, color, img }) => (
+                <Button use="transparent" size="large" key={id}>
+                  <img src={img} alt={color} />
+                </Button>
+              ))
+          : data.map(({ id, color, img }) => (
+              <Button use="transparent" size="large" key={id}>
+                <img src={img} alt={color} />
+              </Button>
+            ))}
       </div>
     </div>
   );
