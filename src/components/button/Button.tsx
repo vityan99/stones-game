@@ -7,11 +7,12 @@ type ButtonType = {
   use: string;
   arrow?: string;
   size: string;
+  img?: string;
   clickHandler?: () => void;
   disabled?: boolean;
 };
-
-const Button: FC<ButtonType> = ({ title, use, arrow, size, clickHandler, disabled }): React.ReactNode => {
+// TODO: Разобраться с img
+const Button: FC<ButtonType> = ({ title, use, arrow, size, img, clickHandler, disabled }): React.ReactElement | null => {
   const sizeModificator = size && size !== "small" ? style[`btn--${size}`] : "";
 
   return (
