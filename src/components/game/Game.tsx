@@ -13,6 +13,25 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
   const [pairs, setPairs] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
 
+  let clicked = data.map(({ color, id }) => ({
+    id,
+    clicked: false,
+    color,
+  }));
+
+  const setClickedHandler = (id: any) => {
+    clicked = clicked.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          clicked: !item.clicked,
+        };
+      }
+      return item;
+    });
+    console.log(clicked);
+  };
+
   useEffect(() => {
     const findPairs = (data: DataType[]): number => {
       const countMap: Record<string, number> = {};
@@ -49,8 +68,8 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
           ? data
               .sort(() => Math.random() - 0.5)
               .map(({ id, color, img }) => (
-                <Button use="transparent" size="large" key={id}>
-                  <img src={img} alt={color} />
+                <Button use="unavailable" size="large" key={id} clickHandler={() => setClickedHandler(id)}>
+                  <img className={cn(style["game__area__diamond--unavailable"])} src={img} alt={color} />
                 </Button>
               ))
           : data.map(({ id, color, img }) => (

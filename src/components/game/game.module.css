@@ -23,3 +23,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.game__area__diamond--unavailable {
+  opacity: 0;
+  
+}

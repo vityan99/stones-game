@@ -56,6 +56,20 @@
   border: none;
 }
 
+.btn--unavailable {
+  background: linear-gradient(
+      235deg,
+      rgba(202, 30, 163, 0.49) 0%,
+      transparent 35%,
+      rgba(228, 17, 59, 0.99) 55.00000000000001%,
+      rgba(105, 22, 155, 0.24) 55.00000000000001%,
+      rgb(196, 19, 95) 100%
+    ),
+    linear-gradient(120deg, rgb(171, 18, 78) 0%, rgb(205, 17, 86) 25%, rgb(167, 15, 56) 25%, rgb(232, 30, 128) 100%);
+
+  border-radius: 30px;
+}
+
 .btn--medium {
   font-size: 18px;
 }
