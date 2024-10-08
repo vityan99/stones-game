@@ -32,8 +32,10 @@
 
 .game__area__diamond--unavailable {
   opacity: 0;
+  visibility: hidden;
 }
 
 .game__area__diamond--clicked {
   opacity: 1;
+  visibility: visible;
 }

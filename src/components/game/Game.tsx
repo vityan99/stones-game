@@ -83,7 +83,7 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
   return (
     <div className={cn(style.game)}>
       <div className={cn(style.game__controllers)}>
-        <Button title="Начать игру" use="primary" size="large" clickHandler={gameStartHandler} />
+        <Button title={gameStart ? "Сбросить" : "Начать игру"} use="primary" size="large" clickHandler={gameStartHandler} />
       </div>
       <div className={cn(style.game__info)}>
         <span className={cn(style["game__info-note"])}>Найдено пар: {pairs}</span>
