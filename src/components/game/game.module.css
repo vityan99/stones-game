@@ -19,12 +19,21 @@
 .game__area {
   display: flex;
   max-width: 550px;
+  min-height: 550px;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: 24px;
+}
+
+.game__area__diamond {
+  transition: opacity 0.3s ease;
 }
 
 .game__area__diamond--unavailable {
   opacity: 0;
-  
+}
+
+.game__area__diamond--clicked {
+  opacity: 1;
 }
