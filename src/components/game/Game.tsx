@@ -20,6 +20,7 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
       setClicked(data.map(({ color, id }: any) => ({ id, clicked: false, color })));
     }
     setGameStart((current) => !current);
+    setPairs(0);
   };
 
   const checkClickedDiamonds = (id: number): void => {
