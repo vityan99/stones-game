@@ -3,83 +3,79 @@ import style from "./game.module.css";
 import cn from "classnames";
 import Button from "../button/Button";
 
-import { DataType, DataGameType, ClickedType } from "../../types/types";
+import { DiamondType, DataGameType } from "../../types/types";
 
 const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
   const [gameStart, setGameStart] = useState<boolean>(false);
+  const [shuffledData, setShuffledData] = useState<DiamondType[]>([]);
   const [pairs, setPairs] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
-  const [clicked, setClicked] = useState<ClickedType[]>([]);
-  const [shuffledData, setShuffledData] = useState<DataType[]>([]);
-  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [compareArray, setCompareArray] = useState<DiamondType[]>([]);
 
   const gameStartHandler = (): void => {
     if (!gameStart) {
-      const shuffled = [...data].sort(() => Math.random() - 0.5);
-      setShuffledData(shuffled);
-      setClicked(data.map(({ color, id }: any) => ({ id, clicked: false, color })));
+      const shuffledDataArray = [...data].sort(() => Math.random() - 0.5).map((diamond) => ({ ...diamond, hidden: true, disabled: false }));
+      setShuffledData(shuffledDataArray);
     }
+
     setGameStart((current) => !current);
     setPairs(0);
   };
 
-  const checkClickedDiamonds = (id: number): void => {
-    if (selectedIds.length >= 2) return;
+  const compareDataHandler = (diamond: DiamondType): void => {
+    if (!compareArray.includes(diamond)) {
+      setCompareArray((current) => [...current, diamond]);
+    }
+  };
 
-    setClicked((prevClicked) => {
-      const updatedClicked = prevClicked.map((item: ClickedType) => {
-        if (item.id === id) {
-          if (item.clicked || item.found) {
-            return item;
-          }
-          return { ...item, clicked: true };
-        }
-        return item;
-      });
+  const compareDiamonds = (): void => {
+    if (compareArray.every((diamond) => diamond.color === compareArray[0].color)) {
+      changeDataStatus();
+    }
+  };
 
-      const newSelectedIds = [...selectedIds, id];
-      setSelectedIds(newSelectedIds);
+  const changeDataStatus = (): void => {
+    const updatedShuffledData = shuffledData.map((targetDiamond: DiamondType): DiamondType => {
+      const isMatch = compareArray.some((diamond: DiamondType): boolean => diamond.id === targetDiamond.id);
 
-      if (newSelectedIds.length === 2) {
-        const [firstId, secondId] = newSelectedIds;
-        const firstItem = updatedClicked.find((item) => item.id === firstId);
-        const secondItem = updatedClicked.find((item) => item.id === secondId);
-
-        if (firstItem && secondItem && firstItem.color === secondItem.color) {
-          const updatedWithFound = updatedClicked.map((item) => {
-            if (item.id === firstId || item.id === secondId) {
-              return { ...item, found: true };
-            }
-            return item;
-          });
-          setSelectedIds([]);
-          return updatedWithFound;
-        } else {
-          setClicked((prevClicked) =>
-            prevClicked.map((item) => {
-              if (item.id === firstId || item.id === secondId) {
-                return { ...item, clicked: false };
-              }
-              return item;
-            })
-          );
-          setSelectedIds([]);
-        }
+      if (isMatch) {
+        return {
+          ...targetDiamond,
+          hidden: false,
+          disabled: true,
+        };
       }
 
-      return updatedClicked;
+      return targetDiamond;
     });
+
+    setShuffledData(updatedShuffledData);
+    setPairs((current) => current + 1);
   };
 
   useEffect(() => {
-    if (clicked.filter((diamond) => diamond.clicked).length % 2 === 0) {
-      setPairs(clicked.filter((diamond) => diamond.clicked).length / 2);
-    }
-  }, [clicked]);
+    const totalPairs = data.reduce<Record<string, number>>((acc, { color }) => {
+      if (acc[color]) {
+        acc[color] += 1;
+      } else {
+        acc[color] = 1;
+      }
+      return acc;
+    }, {});
+
+    const countPairs = Object.values(totalPairs).reduce<number>((acc, count) => {
+      return acc + Math.floor(count / 2);
+    }, 0);
+
+    setTotal(countPairs);
+  }, []);
 
   useEffect(() => {
-    setTotal(data.length / 2);
-  }, [data]);
+    if (compareArray.length === 2) {
+      compareDiamonds();
+      setCompareArray([]);
+    }
+  }, [compareArray]);
 
   return (
     <div className={cn(style.game)}>
@@ -92,18 +88,21 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
       </div>
       <div className={cn(style.game__area)}>
         {gameStart
-          ? shuffledData.map(({ id, color, img }) => {
-              const isClicked = clicked.find((item: any) => item.id === id && item.clicked);
+          ? shuffledData.map((diamond) => {
               return (
-                <Button use={isClicked ? "transparent" : "unavailable"} key={id} clickHandler={() => checkClickedDiamonds(id)}>
+                <Button
+                  use={!diamond.hidden ? "transparent" : "unavailable"}
+                  key={diamond.id}
+                  clickHandler={() => compareDataHandler(diamond)}
+                >
                   <img
                     className={cn(
                       style.game__area__diamond,
                       style["game__area__diamond--unavailable"],
-                      isClicked && style["game__area__diamond--clicked"]
+                      !diamond.hidden && style["game__area__diamond--clicked"]
                     )}
-                    src={img}
-                    alt={color}
+                    src={diamond.img}
+                    alt={diamond.color}
                   />
                 </Button>
               );

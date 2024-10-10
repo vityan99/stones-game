@@ -1,16 +1,11 @@
-export type DataType = {
+export type DiamondType = {
   id: number;
   color: string;
   img: string;
+  hidden?: boolean;
+  disabled?: boolean;
 };
 
 export type DataGameType = {
-  data: DataType[];
-};
-
-export type ClickedType = {
-  id: number;
-  clicked: boolean;
-  found?: boolean;
-  color: string;
+  data: DiamondType[];
 };

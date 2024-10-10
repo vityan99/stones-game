@@ -3,9 +3,9 @@ import stone_2 from "../images/t2.png";
 import stone_3 from "../images/t3.png";
 import stone_4 from "../images/t4.png";
 
-import { DataType } from "../../types/types";
+import { DiamondType } from "../../types/types";
 
-export const data: DataType[] = [
+export const data: DiamondType[] = [
   {
     id: 346,
     color: "blue",
