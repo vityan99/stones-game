@@ -63,9 +63,7 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
       return acc;
     }, {});
 
-    const countPairs = Object.values(totalPairs).reduce<number>((acc, count) => {
-      return acc + Math.floor(count / 2);
-    }, 0);
+    const countPairs = Object.values(totalPairs).reduce<number>((acc, count) => acc + Math.floor(count / 2), 0);
 
     setTotal(countPairs);
   }, []);
