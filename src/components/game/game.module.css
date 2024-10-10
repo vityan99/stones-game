@@ -35,7 +35,7 @@
   visibility: hidden;
 }
 
-.game__area__diamond--clicked {
+.game__area__diamond--found {
   opacity: 1;
   visibility: visible;
 }

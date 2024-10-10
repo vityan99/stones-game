@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Stones game - игра (React + TS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Главная задача игры:
 
-## Available Scripts
+- Нажать на кнопку "Начать игру". После старта необходимо найти одинаковые пары камней.
 
-In the project directory, you can run:
+## Preview
 
-### `npm start`
+![Stones-game preview-1](https://github.com/vityan99/stones-game/blob/main/preview-1.png)
+![Stones-game preview-2](https://github.com/vityan99/stones-game/blob/main/preview-2.png)
+![Stones-game preview-3](https://github.com/vityan99/stones-game/blob/main/preview-3.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Содержание
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Технологии](#технологии)
+- [Использование](#использование)
+- [Для каких целей разработан данный проект?](#для-каких-целей-разработан-данный-проект)
+- [Исполнитель проекта](#исполнитель-проекта)
 
-### `npm test`
+## Технологии
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [HTML5](https://html.com/html5/)
+- [CSS3](https://www.w3schools.com/W3CSS/)
+- [React](https://reactdev.ru/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [gitignore](https://docs.gitignore.io/)
 
-### `npm run build`
+## Использование
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Для просмотра и запуска проекта - Вам необходимо:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Скачать архив и разархивировать содержимое в удобное для Вас место
+- Открыть папку с содержимым в редакторе кода
+- Установить все зависимости командой `npm i`
+- Выполнить команду в терминале `npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Для каких целей разработан данный проект?
 
-### `npm run eject`
+Данный проект разрабатывался с целью оттачивания знаний по изученным технологиям.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Исполнитель проекта
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Виктор Тян](https://t.me/vityan00) — Front-End Developer

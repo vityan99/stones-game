@@ -97,7 +97,7 @@ const Game: FC<DataGameType> = ({ data }): React.ReactElement => {
                     className={cn(
                       style.game__area__diamond,
                       style["game__area__diamond--unavailable"],
-                      !diamond.hidden && style["game__area__diamond--clicked"]
+                      !diamond.hidden && style["game__area__diamond--found"]
                     )}
                     src={diamond.img}
                     alt={diamond.color}
